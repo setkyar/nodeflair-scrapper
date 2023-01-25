@@ -20,6 +20,14 @@ pip install -r requirements.txt
 
 Copy `.env.example` to `.env` and configure telegram bot and chat id.
 
+```
+NOTIFY_TELEGRAM=False
+TELEGRAM_BOT_TOKEN=Your bot token without bot prefix
+CHAT_ID=
+```
+
+Don't forget to download [geckodriver](https://github.com/mozilla/geckodriver/releases) and move it under `~/.local/bin` and make it executable.
+
 ### Usage
 
 ```
