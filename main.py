@@ -23,6 +23,7 @@ location = sys.argv[2]
 salary = sys.argv[3]
 
 is_notify_telegram = os.getenv("NOTIFY_TELEGRAM", "False")
+is_notify_discord = os.getenv("NOTIFY_DISCORD", "False")
 
 # Example Page https://nodeflair.com/jobs?query=DevOps&page=1&sort_by=relevant&countries%5B%5D=Singapore&salary_min=8000
 
@@ -82,7 +83,7 @@ try:
     for i in range(len(roles)):
         message = f"{roles[i]}\n {salaries[i]}\n {companies[i]}\n {detail_links[i]}"
 
-        if is_notify_telegram:
+        if is_notify_telegram and is_notify_telegram != "False":
             print("Sending Telegram notification")
             telegram_webhook = f"https://api.telegram.org/bot{os.getenv('TELEGRAM_BOT_TOKEN')}/sendMessage"
             chat_id = os.getenv("CHAT_ID")
@@ -94,9 +95,18 @@ try:
             requests.post(telegram_webhook, data={
                           "chat_id": chat_id, "text": message})
 
+        if is_notify_discord:
+            print("Sending Discord notification")
+            discord_webhook = os.getenv("DISCORD_WEBHOOK")
+            
+            message = f"{message}\n---"
+            requests.post(discord_webhook, json={"content": message})
+
         print(message)
 
 except:
     print("No results found")
+    # print error
+    print(sys.exc_info()[0])
 
 browser.quit()

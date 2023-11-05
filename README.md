@@ -6,7 +6,7 @@ A simple [Nodeflair](https://nodeflair.com) job scrapper. Specifically to the [s
 
 Idea is like to setup a cron once a day send to your telegram bot for you.
 
-You can read more [here](https://setkyar.com/scrapping-nodeflair-and-notify-to-telegram) for usage idea.
+You can read [this blog post](https://setkyar.com/scrapping-nodeflair-and-notify-to-telegram) for usage idea. Nothing new as here but writing as a blog post lol!
 
 ### Installation
 
